@@ -1,4 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 
 import java.util.*;
 import java.util.stream.IntStream;
