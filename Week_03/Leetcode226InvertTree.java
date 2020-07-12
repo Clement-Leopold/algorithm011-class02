@@ -4,19 +4,20 @@ public class Leetcode226InvertTree {
         if (root == null) {
             return null;
         }
-        TreeNode left = root.left;
-        root.left = invertTree(root.right);
-        root.right = invertTree(left);
+        invert(root);
         return root;
     }
 
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+    private void invert(TreeNode root) {
+        if (root == null) {
+            return;
         }
+        TreeNode right = root.right;
+        root.right = root.left;
+        root.left = right;
+        invert(root.left);
+        invert(root.right);
     }
+
+
 }
