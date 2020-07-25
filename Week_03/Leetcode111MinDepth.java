@@ -1,3 +1,5 @@
+import tree.TreeNode;
+
 /**
  * leetcode 111 二叉树的最小深度
  */

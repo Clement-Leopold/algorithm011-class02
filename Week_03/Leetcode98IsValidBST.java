@@ -1,3 +1,5 @@
+import tree.TreeNode;
+
 /**
  * 98 验证二叉搜索树
  */
