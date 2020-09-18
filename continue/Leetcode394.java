@@ -30,28 +30,28 @@ public class Leetcode394 {
 
 
     public String decodeStringStack(String s) {
-        Stack<String> resStack = new Stack<>();
+        Stack<String> res = new Stack<>();
         Stack<Integer> numbers = new Stack<>();
         int index = 0;
-        String res = "";
+        String result = "";
         while (index < s.length()) {
             if (Character.isDigit(s.charAt(index))) {
                 int number = s.charAt(index) - '0';
                 while (Character.isDigit(s.charAt(++index))) number = number * 10 + s.charAt(index) - '0';
                 numbers.push(number);
             } else if (s.charAt(index) == '[') {
-                resStack.push(res);
-                res = "";
+                res.push(result);
+                result = "";
                 index++;
             } else if (s.charAt(index) == ']') {
-                String temp = resStack.pop();
+                String temp = res.pop();
                 int number = numbers.pop();
-                for (int i = 0; i < number; i++) temp += res;
+                for (int i = 0; i < number; i++) temp += result;
+                result = temp;
                 index++;
-                res = temp;
-            } else res += s.charAt(index++);
+            } else result += s.charAt(index++);
         }
-        return res;
+        return result;
     }
 
 

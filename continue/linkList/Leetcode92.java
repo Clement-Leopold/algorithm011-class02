@@ -2,27 +2,24 @@ package linkList;
 
 public class Leetcode92 {
     public ListNode reverseBetween(ListNode head, int m, int n) {
-        ListNode fakeHead = new ListNode(-1);
-        fakeHead.next = head;
-        ListNode prev = fakeHead;
-        ListNode curr = fakeHead.next;
-        int i = 1;
-        while (i < m) {
-            prev = curr;
-            curr = curr.next;
-            i++;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode prev = dummy;
+        ListNode cur = head;
+        for (int i = 0; i < m - 1; i++) {
+            prev = prev.next;
+            cur = cur.next;
         }
         ListNode node = prev;
-        while (i <= n) {
-            ListNode tmp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = tmp;
-            i++;
+        for (int i = m; i <= n; i++) {
+            ListNode temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
         }
-        node.next.next = curr;
+        node.next.next = cur;
         node.next = prev;
-        return fakeHead.next;
+        return dummy.next;
     }
 
     public static void main(String[] args) {
@@ -32,6 +29,6 @@ public class Leetcode92 {
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
         Leetcode92 leetcode92 = new Leetcode92();
-        leetcode92.reverseBetween(head,2,4);
+        leetcode92.reverseBetween(head, 2, 4);
     }
 }
