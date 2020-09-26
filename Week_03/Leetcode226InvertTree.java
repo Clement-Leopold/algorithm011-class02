@@ -1,5 +1,3 @@
-import tree.TreeNode;
-
 public class Leetcode226InvertTree {
 
     public TreeNode invertTree(TreeNode root) {
