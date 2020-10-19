@@ -21,19 +21,20 @@ public class Leetcode94 {
     }
 
     public List<Integer> inorder(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        LinkedList<TreeNode> linkedList = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return null;
+        LinkedList<TreeNode> stack = new LinkedList<>();
         TreeNode cur = root;
-        while (cur != null || !linkedList.isEmpty()) {
+        while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
-                linkedList.push(cur);
+                stack.push(cur);
                 cur = cur.left;
             }
-            cur = linkedList.poll();
-            list.add(cur.val);
+            cur = stack.poll();
+            res.add(cur.val);
             cur = cur.right;
         }
-        return list;
+        return res;
     }
 
 
