@@ -9,7 +9,7 @@ public class Leetcode55 {
                 max = Math.max(max, i + nums[i]);
             }
         }
-        return max >= nums.length - 1 ? true : false;
+        return max >= nums.length - 1;
     }
 
     public static void main(String[] args) {
